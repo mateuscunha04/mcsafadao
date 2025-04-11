@@ -225,6 +225,10 @@
             margin-left: 2em;
         }
 
+        form{
+            width: 60%;
+        }
+
         @media screen and (max-width: 1250px) and (min-width: 700px){
             iframe{
                 width: 90%;
@@ -271,6 +275,10 @@
 
             article p{
                 font-size: 15px;
+            }
+
+            form{
+                width: 100%;
             }
         }
     </style>
@@ -379,6 +387,8 @@
         var opcoes = document.getElementById("seleção");
         var hidden1 = document.getElementById("hidden1");
         var hidden2 = document.getElementById("hidden2");
+
+        import emailjs from emailjs;
 
         function banido(){
             alert("Você não deveria estar aqui.");
