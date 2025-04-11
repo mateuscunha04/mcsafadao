@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <title>MC Safadão</title>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "gm-q9SCLGBHic2Pv_",
+            });
+        })();
+    </script>
+
+    <style>
+        body, *{
+            margin: 0;
+            padding: 0;
+            font-family: "Nunito", "Oswald", serif;
+            font-weight: 400;
+            font-style: normal;
+            color: var(--cor-3);
+        }
+
+        :root{
+            --cor-1: #D5BD45;
+            --cor-2: #AA9C54;
+            --cor-3: #FFDB29;
+            --cor-4: #807854;
+            --cor-5: #222222;
+            --cor-6: #555555;
+        }
+
+        header, footer{
+            background-color: rgb(35, 35, 35);
+            padding: 20px 0 20px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        nav{
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        nav a:hover{
+            box-shadow: 0px 7px 5px -5px var(--cor-1);
+            transition: 0.3s linear;
+        }
+
+        #logo{
+            width: 100px;
+            height: 100px;
+        }
+
+        h1{
+            margin-bottom: 25px;
+            font-size: 45px;
+            text-align: center;
+            color: var(--cor-1);
+        }
+
+        h2, nav a{
+            margin-bottom: 10px;
+            color: var(--cor-3);
+            font-size: 25px;
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--cor-3);
+        }
+
+        article{
+            margin-bottom: 33px;
+        }
+
+        h2{
+            font-size: 35px;
+        }
+
+        article p {
+            text-align: justify;
+            font-size: 22px;
+        }
+
+        .desc{
+            text-indent: 2em;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            position: static;
+        }
+
+        .main{
+            position: relative;
+            width: 60%;
+            height: 100%;
+            bottom: 0;
+            padding: 30px 45px 30px 45px;
+            background-color: rgb(22, 22, 22);
+        }
+
+        .main, header, header h1{
+            z-index: 2;
+        }
+
+        body{
+            z-index: 1;
+            background-image: url("img/wallpaper.webp");
+            overflow-x: hidden;
+        }
+
+        .img{
+            display: flex;
+            justify-self: center;
+            border: 2.2px solid whitesmoke;
+            border-radius: 8%;
+            margin-bottom: 30px;
+        }
+
+        #galeria{
+            gap: 0;
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            margin: 0 -45px 20px -45px;
+        }
+
+        .album{
+            box-sizing: border-box;
+            width: 25%;
+            height: fit-content;
+        }
+
+        .album img{
+            width: 100%;
+            height: auto;
+        }
+
+        iframe{
+            display: flex;
+            justify-self: center;
+        }
+
+        .opção{
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            align-items: center;
+        }
+
+        span{
+            font-family: "Oswald", sans-serif;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        form input{
+            background-color: var(--cor-6);
+            color: white;
+            font-size: 17px;
+        }
+
+        #enviar{
+            border: 2px solid var(--cor-4);
+            color: var(--cor-4);
+            background-color: var(--cor-3);
+            border-radius: 10px;
+            justify-content: center;
+            width: 80px;
+            height: fit-content;
+            padding: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #enviar:hover{
+            background-color: var(--cor-1);
+        }
+
+        #hidden1, #hidden2{
+            display: none;
+        }
+
+        #hidden2{
+            flex-direction: column;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #figurinha{
+            width: 200px;
+            height: auto;
+        }
+
+        iframe{
+            margin-bottom: 30px;
+        }
+
+        article ul {
+            font-size: 25px;
+            margin-left: 2em;
+        }
+
+        @media screen and (max-width: 1250px) and (min-width: 700px){
+            iframe{
+                width: 90%;
+            }
+
+            h1{
+                font-size: 40px;
+            }
+
+            h2{
+                font-size: 30px;
+            }
+
+            article p{
+                font-size: 20px;
+            }
+        }
+
+        @media screen and (max-width: 700px){
+            iframe{
+                width: 100%;
+            }
+
+            nav a{
+                font-size: 18px;
+            }
+
+            .main{
+                width: 70%;
+                padding: 20px;
+            }
+
+            #galeria{
+                margin: 0 -20px 15px -20px;
+            }
+
+            h1{
+                font-size: 35px;
+            }
+
+            h2{
+                font-size: 25px;
+            }
+
+            article p{
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<!--
+    3x h1
+    3x h2
+    3x p
+
+    - header
+    - footer
+
+    2x img
+    2x video
+    css básico
+-->
+
+<body id="body">
+    <header>
+        <img src="img/logo.png" alt="" id="logo">
+        <nav>
+            <a href="#SHOWS" class="topicos">SHOWS</a><a href="#LANÇAMENTOS" class="topicos">LANÇAMENTOS</a><a href="#CAMARIM" class="topicos">CAMARIM</a>
+        </nav>
+    </header>
+    <main>
+        <div class="main">
+            <article>
+                <h1>Um novo conceito de <span>safadeza</span></h1>
+                <h2><span>Um jovem romântico, sagaz e feroz.</span></h2>
+                <p class="desc">Essas são as palavras que definem o artista mais popular de <b>Piraquara</b>. Com inspiração em outras celebridades como <b>Calvin Harris, Wesley Safadão e Alex Turner</b>, o <span>MC Safadão</span> encanta as mulheres de todo o <b>Brasil</b> com as suas letras poéticas e melodias sensuais.</p>
+            </article>
+            <section id="galeria">
+                <div class="album">
+                    <img src="img/álbuns/1.png" alt="">
+                </div>
+                <div class="album">
+                    <img src="img/álbuns/2.png" alt="">
+                </div>
+                <div class="album">
+                    <img src="img/álbuns/3.png" alt="">
+                </div>
+                <div class="album">
+                    <img src="img/álbuns/4.png" alt="">
+                </div>
+            </section>
+            <article>
+                <h1 id="SHOWS">Shows e Turnês</h1>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/QshO9ZZV1SA?si=pQIROGFAHUI0eqyN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p class="desc">Nos próximos dias, o MC Safadão irá visitar as seguintes cidades brasileiras:</p>
+                <ul>
+                    <li>Cuiabá (MT)</li>
+                    <li>Ponta Grossa (PR)</li>
+                    <li>Guarituba, Piraquara (PR)</li>
+                    <li>Rolândia (PR)</li>
+                    <li>BC - Balneário Camboriú (SC)</li>
+                </ul>
+                <p><span>AVISO:</span> o ingresso é gratuito para todas as mulheres!</p>
+            </article>
+            <article>
+                <h1 id="LANÇAMENTOS">Lançamentos</h1>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/WNfsaMqdnEA?si=JXHXkJ2COnVo3-wq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </article>
+            <article>
+                <h1 id="CAMARIM">Camarim</h1>
+                <div id="seleção">
+                    <h2>Selecione o seu sexo:</h2>
+                    <div class="opção">
+                        <input type="radio" name="Sexo" value="M" onclick="banido()">
+                        <h3>Homem</h3>
+                    </div>
+                    <div class="opção">
+                        <input type="radio" name="Sexo" value="F" onclick="aprovada()">
+                        <h3>Mulher</h3>
+                    </div>
+                </div>
+                <div id="hidden1">
+                    <form>
+                        <h2>Selecione uma foto:</h2>
+                        <label for="campo"><span>ATENÇÃO: A FOTO DEVE MOSTRAR O SEU CORPO INTEIRO!</span></label>
+                        <input id="campo" type="file" accept="image/*" capture="user" required>
+                        <label for="nome">Nome</label>
+                        <input id="nome" type="text" placeholder="Fulana da Silva" required>
+                        <label for="insta">Instagram</label>
+                        <input id="insta" type="text" placeholder="fulana_gstz_123" required>
+                        <label for="wpp">Número do Whatsapp</label>
+                        <input id="wpp" type="text" placeholder="(69) 96969-6969" required>
+                        <div id="enviar" onclick="sendMessage()">Enviar</div>
+                    </form>
+                </div>
+                <div id="hidden2">
+                    <h2>Obrigado, minha princesa.</h2>
+                    <div><img src="img/figurinha.png" alt="" id="figurinha"></div>
+                    <p>Espero poder encontrá-la em meu camarim. Boa sorte!</p>
+                </div>
+            </article>
+        </div>
+    </main>
+    <footer>
+        <h3><span>Assessoria do Safadão:</span></h3>
+        <h3><a href="https://wa.me/5541988810610">98881-0610 (Mateus)</a></h3>
+        <h4>Todos os direitos reservados <span>© MC Safadão LTDA.</span></h4>
+    </footer>
+
+    <script>
+        var opcoes = document.getElementById("seleção");
+        var hidden1 = document.getElementById("hidden1");
+        var hidden2 = document.getElementById("hidden2");
+
+        function banido(){
+            alert("Você não deveria estar aqui.");
+            window.location.href = "fds";
+        }
+
+        function aprovada(){
+            opcoes.style.display = "none";
+            hidden1.style.display = "flex";
+        }
+
+        function sendMessage() {
+            const file = document.getElementById("campo").files[0];
+            if (!file) return alert("Selecione uma imagem.");
+
+            const reader = new FileReader();
+            reader.onload = () => {
+                const params = {
+                    name: document.getElementById("nome").value,
+                    ig: document.getElementById("insta").value,
+                    wpp: document.getElementById("wpp").value,
+                    foto: reader.result,
+                };
+
+                emailjs.send("service_g89ck7t", "template_0ovi8z8", params);
+            };
+
+            reader.readAsDataURL(file);
+
+            hidden1.style.display = "none";
+            hidden2.style.display = "flex";
+        }
+    </script>
+</body>
+</html>
