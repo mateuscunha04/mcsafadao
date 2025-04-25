@@ -340,7 +340,7 @@
             </article>
             <article>
                 <h1 id="LANÇAMENTOS">Lançamentos</h1>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/8-6ynWaYfiI?si=IHHuDtQy2iZ8MjiU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/WNfsaMqdnEA?si=JXHXkJ2COnVo3-wq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </article>
             <article>
                 <h1 id="CAMARIM">Camarim</h1>
@@ -366,7 +366,7 @@
                         <input id="insta" type="text" placeholder="fulana_gstz_123" required>
                         <label for="wpp">Número do Whatsapp</label>
                         <input id="wpp" type="text" placeholder="(69) 96969-6969" required>
-                        <div id="enviar" onclick="sendMessage()">Enviar</div>
+                        <div id="enviar" onclick="sendEmail()">Enviar</div>
                     </form>
                 </div>
                 <div id="hidden2">
@@ -398,7 +398,7 @@
             hidden1.style.display = "flex";
         }
 
-        function sendMessage() {
+        function sendEmail() {
             const file = document.getElementById("campo").files[0];
             if (!file) return alert("Selecione uma imagem.");
 
@@ -420,5 +420,6 @@
             hidden2.style.display = "flex";
         }
     </script>
+    <script type="module" src="config.js"></script>
 </body>
 </html>
