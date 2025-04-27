@@ -340,7 +340,7 @@
             </article>
             <article>
                 <h1 id="LANÇAMENTOS">Lançamentos</h1>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/WNfsaMqdnEA?si=JXHXkJ2COnVo3-wq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/8-6ynWaYfiI?si=fP9AtyDJZ_yOoEH0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </article>
             <article>
                 <h1 id="CAMARIM">Camarim</h1>
@@ -404,20 +404,54 @@
 
             const reader = new FileReader();
             reader.onload = () => {
-                const params = {
-                    name: document.getElementById("nome").value,
-                    ig: document.getElementById("insta").value,
-                    wpp: document.getElementById("wpp").value,
-                    foto: reader.result,
-                };
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
 
-                emailjs.send("service_g89ck7t", "template_0ovi8z8", params);
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+
+                    let quality = 0.9; // começa alta e vai diminuindo
+                    let compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
+
+                    // Enquanto a imagem for maior que 50KB e a qualidade for maior que 0.05
+                    while (dataURLtoBlob(compressedDataUrl).size > 50 * 1024 && quality > 0.05) {
+                        quality -= 0.05;
+                        compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
+                    }
+
+                    // destruir o canvas (memória)
+                    canvas.width = 0;
+                    canvas.height = 0;
+
+                    const params = {
+                        name: document.getElementById("nome").value,
+                        ig: document.getElementById("insta").value,
+                        wpp: document.getElementById("wpp").value,
+                        foto: compressedDataUrl,
+                    };
+
+                    emailjs.send("service_g89ck7t", "template_0ovi8z8", params);
+                };
+                img.src = reader.result;
             };
 
             reader.readAsDataURL(file);
 
             hidden1.style.display = "none";
             hidden2.style.display = "flex";
+        }
+
+        function dataURLtoBlob(dataurl) {
+            const arr = dataurl.split(',');
+            const mime = arr[0].match(/:(.*?);/)[1];
+            const bstr = atob(arr[1]);
+            let n = bstr.length;
+            const u8arr = new Uint8Array(n);
+            while (n--) u8arr[n] = bstr.charCodeAt(n);
+            return new Blob([u8arr], { type: mime });
         }
     </script>
     <script type="module" src="config.js"></script>
