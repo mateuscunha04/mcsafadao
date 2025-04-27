@@ -417,7 +417,7 @@
                     let compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
 
                     // Enquanto a imagem for maior que 50KB e a qualidade for maior que 0.05
-                    while (dataURLtoBlob(compressedDataUrl).size > 25 * 1024 && quality > 0.05) {
+                    while (dataURLtoBlob(compressedDataUrl).size > 30 * 1024 && quality > 0.05) {
                         quality -= 0.05;
                         compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
                     }
